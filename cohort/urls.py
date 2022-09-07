@@ -14,4 +14,5 @@ urlpatterns = [
         "question/delete/<cID>/<eID>/<id>/", views.delete_questions, name="viva_delete"
     ),
     path("viva/evaluate/<uuid:rID>/", views.viva_evaluate, name="viva_evaluate"),
+    path("viva/evaluate/result/", views.show_viva_result, name="viva_evaluate_result"),
 ]

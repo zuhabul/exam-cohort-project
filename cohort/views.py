@@ -257,21 +257,29 @@ def viva_evaluate(request, rID):
         polling_endpoint = utils.make_polling_endpoint(transcript_response)
         print(polling_endpoint)
         utils.wait_for_completion(polling_endpoint, header)
-        # print(polling_endpoint.json())
         paragraphs = utils.get_paragraphs(polling_endpoint, header)
         print(paragraphs)
         answer_supplied = ""
         for para in paragraphs:
             print(para["text"])
             answer_supplied = para["text"]
-
-        # return render(
-        #     request,
-        #     "dashboard/dashboard.html",
-        # )
         messages.success(request, "Audio recording successfully added!")
-        url = BASE_URL + "/dashboard/"
+        url = "/cohort/viva/evaluate/result/"
+        answer_text = answer_text[-1]
+        answer_supplied = answer_supplied[-1]
         print(answer_text)
         print(answer_supplied)
 
-        return JsonResponse({"url": url, "success": True})
+        print(answer_supplied in answer_text)
+        isPassed = "did not passed"
+        if answer_supplied in answer_text:
+            isPassed = "passed"
+
+        return JsonResponse({"url": url, "success": True, "result": isPassed})
+
+
+def show_viva_result(request):
+    return render(
+        request,
+        "exam/microVivaResult.html",
+    )

@@ -111,6 +111,7 @@ $('#submit').on('click', function (event) {
     dataType: 'json',
     success: function (response) {
       console.log(url);
+      console.log(response.result);
       console.log(response.data);
       if (response.success) {
         document.getElementById('alert').style.display = 'block';
