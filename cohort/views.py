@@ -236,50 +236,43 @@ def viva_evaluate(request, rID):
         BASE_URL = config("BASE_URL")
         # file submitted
         upload_url = utils.upload_file(file_answer, header)
-        print(upload_url)
+        # print(upload_url)
         transcript_response = utils.request_transcript(upload_url, header)
 
         polling_endpoint = utils.make_polling_endpoint(transcript_response)
-        print(polling_endpoint)
+        # print(polling_endpoint)
         utils.wait_for_completion(polling_endpoint, header)
         paragraphs = utils.get_paragraphs(polling_endpoint, header)
-        print(paragraphs)
-        print(paragraphs)
+        # print(paragraphs)
+        # print(paragraphs)
         answer_text = ""
         for para in paragraphs:
-            print(para["text"])
+            # print(para["text"])
             answer_text = para["text"]
 
         upload_url = utils.upload_file(file_answer_supplied, header)
-        print(upload_url)
+        # print(upload_url)
         transcript_response = utils.request_transcript(upload_url, header)
 
         polling_endpoint = utils.make_polling_endpoint(transcript_response)
-        print(polling_endpoint)
+        # print(polling_endpoint)
         utils.wait_for_completion(polling_endpoint, header)
         paragraphs = utils.get_paragraphs(polling_endpoint, header)
-        print(paragraphs)
+        # print(paragraphs)
         answer_supplied = ""
         for para in paragraphs:
-            print(para["text"])
             answer_supplied = para["text"]
-        messages.success(request, "Audio recording successfully added!")
-        url = "/cohort/viva/evaluate/result/"
-        answer_text = answer_text[-1]
-        answer_supplied = answer_supplied[-1]
+
         print(answer_text)
         print(answer_supplied)
 
         print(answer_supplied in answer_text)
-        isPassed = "did not passed"
+        isPassed = "Failed"
         if answer_supplied in answer_text:
-            isPassed = "passed"
-
+            isPassed = "Passed"
+        url = "/cohort/viva/evaluate/result/" + isPassed + "/"
         return JsonResponse({"url": url, "success": True, "result": isPassed})
 
 
-def show_viva_result(request):
-    return render(
-        request,
-        "exam/microVivaResult.html",
-    )
+def show_viva_result(request, res):
+    return render(request, "exam/microVivaResult.html", {"result": res})

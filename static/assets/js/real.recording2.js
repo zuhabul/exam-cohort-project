@@ -113,6 +113,7 @@ $('#submit').on('click', function (event) {
       console.log(url);
       console.log(response.result);
       console.log(response.data);
+      console.log(response.url);
       if (response.success) {
         document.getElementById('alert').style.display = 'block';
         window.location.href = `${response.url}`;

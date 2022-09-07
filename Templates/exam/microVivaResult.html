@@ -36,6 +36,10 @@
     <script type="text/javascript">
       const result_box = document.querySelector('.result_box');
       const quit_quiz = result_box.querySelector('.buttons .quit');
+       // if quitQuiz button clicked
+       quit_quiz.onclick = () => {
+        window.location.href='/dashboard/'; //reload the current window
+      };
       {% comment %} var userScore = '{{result}}'; {% endcomment %}
       function showResult() {
         result_box.classList.add('activeResult'); //show result box
