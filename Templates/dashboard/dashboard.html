@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} <a href=" /accounts/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Log Out</a> {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+<h1>dashboard</h1>
+{% endblock %}
+
+{% block firstgrid%}
+
+{%endblock%}
+{%block secondgrid%}
+<div id = "content">
+    <a class = "w3-button w3-red w3-border w3-hover-white w3-round-large w3-right"  href = "/cohort"> + Create Cohort </a><br><br>
+    <h2>Exam Cohorts:</h2><br>
+    {%block cor%}
+    {%for c in cohorts%}
+        <a class = "w3-button w3-red w3-border w3-hover-white w3-round-large w3-left" id = "cohorts" href = "/cohort/cohortIndex/{{c.CohortID}}" > {{c.CohortName}}<hr><p id = "small">Admin : {{c.Admin}}</p></a></>
+    {%endfor%}
+    {%endblock%}
+</div>
+{%endblock%}      
+
+{%block footer%}
+<br>
+<p id = "float_right">User: {{ user.socialaccount_set.all.0.extra_data.name }} </p>
+{%endblock%}

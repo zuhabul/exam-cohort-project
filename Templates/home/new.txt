@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+
+{% endblock %}
+
+{% block firstgrid%}
+
+{%endblock%}
+{%block secondgrid%}
+
+{%endblock%}      
+
+{%block footer%}
+
+{%endblock%}

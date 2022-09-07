@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} <a href=" /accounts/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Log Out</a> {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+<h2>{{Info.CohortName}}</h2>
+{% endblock %}
+
+{% block firstgrid%}
+
+{%endblock%}
+{%block secondgrid%}
+{%for e in exams%}
+<div>
+
+<a href = "#" onclick=window.open("/cohort/cohortIndex/{{Info.cohort.CohortID}}/examIndex/{{e.examID}}/")> {{e.examName}} - {{e.examType}}</a> <br> <hr>
+
+</div>
+
+{%endfor%}
+{%endblock%}      
+
+{%block footer%}
+
+{%endblock%}

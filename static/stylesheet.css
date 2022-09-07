@@ -1,0 +1,57 @@
+#cohorts{
+    position: relative;
+    text-align: justify;
+    margin-right: 30px;
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+a.cohortname:hover{
+    color: #f04949
+}
+div#content{
+    margin:20px;
+}
+#small{
+    font-size: xx-small;
+}
+#mlist{
+    padding-right:80px;
+    text-align: left;
+    margin-right: 50px;
+}
+table,tr,td,th{
+    margin-left: 30px;
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 15px
+}
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+table{
+    width:80%
+}  
+
+#float_right{
+    float: right;
+}
+#float_center{
+    float: center;
+}
+#margin_right{
+    margin-right: 20px;
+    position: relative;
+}
+
+#margin_left{
+    margin-left: 20px;
+    position: relative;
+}
+#margin{
+    margin: 20px;
+}
+#margin_top{
+    margin-top: 20px;
+}

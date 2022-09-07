@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+
+{% endblock %}
+
+{% block firstgrid%}
+
+{%endblock%}
+{%block secondgrid%}
+
+{%endblock%}      
+
+{%block footer%}
+
+{%endblock%}
+
+
+<script>
+  $("button").on('click', function() {
+      $.ajax({
+          'method': 'GET',  // defaults to GET. Set POST if you like, but be aware of the CSRF token submission too!
+          'url': "{% url 'practice' %}",  // submit to the same url
+          'data': { id: text.id },  // pass here any data to the server. You can omit it.
+          success: function(dataReturned) {
+              // This function will run when server returns data
+              $('#my-Test').replaceWith(dataReturned);
+              alert('ok');
+          },
+          error: (error) => {
+              console.log('error');
+            }
+      });
+  });
+</script>

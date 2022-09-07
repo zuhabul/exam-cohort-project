@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+{%block head %} {% endblock %}
+
+{%block navbar %} {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+
+{% endblock %}
+
+{% block firstgrid%}
+
+{% endblock %}
+{% block secondgrid %}
+<div id = 'myTest'>
+{{text.text}} <br> {{id}}
+<button class = "asd" value="{{text.td}}">Button</button>
+</div>
+<script>
+      $(".asd").click(function(){
+        var id = "{{text.id}}";
+        $.ajax({
+            method: 'GET',  // defaults to GET. Set POST if you like, but be aware of the CSRF token submission too!
+            url: "{% url 'practice' %}",  // submit to the same url
+            data: {'id': 'id'},  // pass here any data to the server. You can omit it.
+            success: function(data) {
+                // This function will run when server returns data
+                $('#my-Test').replaceWith(data);
+                alert('ok');
+                console.log(id);
+            },
+            error: (error) => {
+                console.log('error');
+              }
+        });
+      });
+    </script>   
+
+{% endblock %}      
+
+{% block footer%}
+
+{% endblock %}

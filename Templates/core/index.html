@@ -1,0 +1,40 @@
+<!--inherits the layout-->
+{% extends '_base.html' %} {%block head %} {%endblock%} {%block navbar %}
+<a
+  href=" /accounts/logout"
+  class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
+  >Log Out</a
+>
+{% endblock %} {%block navsmall %} {%endblock %}
+<!--passes the page title-->
+{% comment %} {% block title %}{{page_title}}{% endblock title %} {%endcomment%}
+<!--content starts-->
+{% block content %}
+<section class="section">
+  <a href="/dashboard/" class="btn btn-info" role="button">Dashboard</a><br />
+  <hr />
+  <div class="container">
+    <a href="/cohort/cohortIndex/rec/record/">
+      <button type="button" class="btn btn-primary">
+        Add new audio question
+      </button>
+    </a>
+    <h1 class="title has-text-centered">Add new audio question</h1>
+    <ol>
+      {% for record in records %}
+      <li>
+        <div class="level-item has-text-centered">
+          <div>
+            <audio src="{{record.voice_record.url}}" controls></audio>
+
+            {% comment %}
+            <p>Language: {{record.language}}</p>
+            {% endcomment %}
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endblock content %}

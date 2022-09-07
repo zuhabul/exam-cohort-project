@@ -1,0 +1,90 @@
+{% extends 'base.html'%} {%block head %} {%endblock%} {%block navbar %}
+{%endblock %} {%block navsmall %} {% endblock %} {% block header%} {% endblock%}
+{% block firstgrid%}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .button {
+    display: block;
+    width: 120px;
+    height: 50px;
+    background: #4e9caf;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+  }
+</style>
+<div>
+  <a
+    href="/cohort/cohortIndex/{{Info.CohortID}}/examIndex/{{exam.examID}}/createquestion"
+    >Create Question</a
+  >
+  <br />
+  <hr />
+  <a
+    href="/cohort/cohortIndex/rec/record/{{Info.CohortID}}/examIndex/{{exam.examID}}/"
+    >Add Micro Viva Question</a
+  >
+  <br />
+  <hr />
+  <div>
+    <ol>
+      {% for record in records %}
+      <li>
+        <div class="level-item has-text-centered">
+          <div>
+            <audio src="{{record.voice_record.url}}" controls></audio>
+            <button
+              class="button is-info"
+              id="submit"
+              onclick="window.location.href='/cohort/audio/delete/{{Info.CohortID}}/{{exam.examID}}/{{record.id}}/';"
+            >
+              Delete
+            </button>
+            {% comment %}
+            <p>Language: {{record.language}}</p>
+            {% endcomment %}
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+{%endblock%} {%block secondgrid%}
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Option 1</th>
+    <th>Option 2</th>
+    <th>Option 3</th>
+    <th>Option 4</th>
+    <th>Answer</th>
+    <th></th>
+  </tr>
+  {% for q in questions%}
+  <tr>
+    <td>{{q.question}}</td>
+    <td>{{q.op1}}</td>
+    <td>{{q.op2}}</td>
+    <td>{{q.op3}}</td>
+    <td>{{q.op4}}</td>
+    <td>{{q.ans}}</td>
+    <td>
+      <button
+        class="button is-info"
+        id="submit"
+        onclick="window.location.href='/cohort/question/delete/{{Info.CohortID}}/{{exam.examID}}/{{q.id}}/';"
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
+  {%endfor%}
+</table>
+{%endblock%}{%block footer%} {%endblock%}

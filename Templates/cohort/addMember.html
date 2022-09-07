@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} <a href=" /accounts/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Log Out</a> {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+  <br><h2>Add Member</h2><br>
+{% endblock %}
+
+{% block firstgrid%}
+
+        <form action="" method="POST">{% csrf_token %}
+          {{f}}
+        <input type="submit" value="Submit" label = "Add Member"/>
+        </form>
+        <ul>
+{%endblock%}
+{%block secondgrid%}
+<h2>Cohort Member</h2>
+<br>
+<table>
+  <tr>
+    <th> Members </th>
+    <th> Email </th>
+    <th> Role </th>
+  </tr> 
+{%for list in memberlist %}
+  <tr>  
+    <td id = "mlist"> {{list.Member.first_name | capfirst}} {{list.Member.last_name| capfirst}}</td>
+    <td id = "mlist"> {{list.Member.email}} </td>
+    <td id = "mlist"> {{list.MemberStatus}} </td>
+  </tr>  
+{% endfor %}
+  </table>
+{%endblock%}      
+
+{%block footer%}
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{%endblock%}

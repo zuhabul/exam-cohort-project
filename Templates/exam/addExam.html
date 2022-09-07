@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+
+{% endblock %}
+
+{% block firstgrid%}
+
+{%endblock%}
+{%block secondgrid%}
+<form action="" method="POST">
+    {% csrf_token %}
+      {{f}}
+   <input type="submit" name="Add Exam">
+{%endblock%}      
+
+{%block footer%}
+
+{%endblock%}

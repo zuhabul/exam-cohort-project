@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{%block head %} {%endblock%}
+
+{%block navbar %} <a href=" /accounts/logout" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Log Out</a> {% endblock %}
+
+{%block navsmall %} {% endblock %}
+
+{% block header%}
+<h2>create cohort</h2>
+{% endblock %}
+
+{% block firstgrid%}
+
+{%endblock%}
+{%block secondgrid%}
+
+<form action="" method="post">{% csrf_token %}
+  {{ f}}
+<input type="submit" value="Submit" />
+</form>
+{%endblock%}      
+
+{%block footer%}
+
+{%endblock%}
